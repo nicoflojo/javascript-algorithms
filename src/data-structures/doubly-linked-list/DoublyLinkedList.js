@@ -2,23 +2,12 @@ import DoublyLinkedListNode from './DoublyLinkedListNode';
 import Comparator from '../../utils/comparator/Comparator';
 
 export default class DoublyLinkedList {
-  /**
-   * @param {Function} [comparatorFunction]
-   */
   constructor(comparatorFunction) {
-    /** @var DoublyLinkedListNode */
     this.head = null;
-
-    /** @var DoublyLinkedListNode */
     this.tail = null;
-
     this.compare = new Comparator(comparatorFunction);
   }
 
-  /**
-   * @param {*} value
-   * @return {DoublyLinkedList}
-   */
   prepend(value) {
     // Make new node to be a head.
     const newNode = new DoublyLinkedListNode(value, this.head);
@@ -39,10 +28,6 @@ export default class DoublyLinkedList {
     return this;
   }
 
-  /**
-   * @param {*} value
-   * @return {DoublyLinkedList}
-   */
   append(value) {
     const newNode = new DoublyLinkedListNode(value);
 
@@ -66,10 +51,6 @@ export default class DoublyLinkedList {
     return this;
   }
 
-  /**
-   * @param {*} value
-   * @return {DoublyLinkedListNode}
-   */
   delete(value) {
     if (!this.head) {
       return null;
@@ -120,12 +101,6 @@ export default class DoublyLinkedList {
     return deletedNode;
   }
 
-  /**
-   * @param {Object} findParams
-   * @param {*} findParams.value
-   * @param {function} [findParams.callback]
-   * @return {DoublyLinkedListNode}
-   */
   find({ value = undefined, callback = undefined }) {
     if (!this.head) {
       return null;
@@ -150,9 +125,6 @@ export default class DoublyLinkedList {
     return null;
   }
 
-  /**
-   * @return {DoublyLinkedListNode}
-   */
   deleteTail() {
     if (!this.tail) {
       // No tail to delete.
@@ -177,9 +149,6 @@ export default class DoublyLinkedList {
     return deletedTail;
   }
 
-  /**
-   * @return {DoublyLinkedListNode}
-   */
   deleteHead() {
     if (!this.head) {
       return null;
@@ -198,9 +167,6 @@ export default class DoublyLinkedList {
     return deletedHead;
   }
 
-  /**
-   * @return {DoublyLinkedListNode[]}
-   */
   toArray() {
     const nodes = [];
 
@@ -213,28 +179,16 @@ export default class DoublyLinkedList {
     return nodes;
   }
 
-  /**
-   * @param {*[]} values - Array of values that need to be converted to linked list.
-   * @return {DoublyLinkedList}
-   */
   fromArray(values) {
     values.forEach(value => this.append(value));
 
     return this;
   }
 
-  /**
-   * @param {function} [callback]
-   * @return {string}
-   */
   toString(callback) {
     return this.toArray().map(node => node.toString(callback)).toString();
   }
 
-  /**
-   * Reverse a linked list.
-   * @returns {DoublyLinkedList}
-   */
   reverse() {
     let currNode = this.head;
     let prevNode = null;
